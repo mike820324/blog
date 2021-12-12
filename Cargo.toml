@@ -1,0 +1,15 @@
+[package]
+name = "yew-blog"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = { git = "https://github.com/yewstack/yew.git" }
+yew-router = { git = "https://github.com/yewstack/yew.git" }
+gloo-utils = "0.1.1"
+gloo-console = "0.2.1"
+wasm-bindgen = "0.2.78"
+reqwasm = "0.3.1"
+comrak = { version="0.12.1", default-features = false}
