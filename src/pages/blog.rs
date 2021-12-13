@@ -1,7 +1,6 @@
 use yew::prelude::*;
-use comrak::{markdown_to_html, ComrakOptions};
 use reqwasm;
-use gloo_console;
+use crate::components::blog_content::BlogContent;
 
 #[derive(Clone)]
 pub enum FetchState<T> {
@@ -12,7 +11,6 @@ pub enum FetchState<T> {
 
 async fn fetch_blog(blog_id: String) -> String {
     let url = format!("/content/{}.md", blog_id);
-    gloo_console::log!(format!("{}", url));
 
     reqwasm::http::Request::get(&url)
     .send()
@@ -83,17 +81,11 @@ impl Component for Blog {
                 }
             },
             FetchState::Success(content) => {
-                let html = markdown_to_html(&content, &ComrakOptions::default());
-                let div = gloo_utils::document().create_element("div").unwrap();
-                div.set_class_name("blog-content");
-                div.set_inner_html(&html);
-                Html::VRef(div.into())
+                html! {
+                    <BlogContent content={content}/>
+                }
             },
         }
 
-    }
-
-    fn rendered(&mut self, ctx: &Context<Self>, _first_render: bool) {
-        crate::binding::highlightjs::highlight_all();
     }
 }
