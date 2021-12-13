@@ -9,3 +9,7 @@ div.blog-content h1 {
 div.blog-content h2 {
     padding-bottom: 1.0em;
 }
+
+div.card {
+    border: none;
+}
