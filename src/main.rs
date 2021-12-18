@@ -4,9 +4,9 @@ mod binding;
 
 use yew::prelude::*;
 use yew_router::{prelude::*, Switch};
+use crate::components::sidebar::*;
 use crate::pages::blog::Blog;
 use crate::pages::blog_list::BlogList;
-use crate::components::bootstraps::b_card::*;
 
 #[derive(Routable, Debug, Clone, PartialEq)]
 enum AppRoute {
@@ -19,6 +19,7 @@ enum AppRoute {
 }
 
 struct App;
+
 
 impl Component for App {
 	type Message = ();
@@ -34,32 +35,40 @@ impl Component for App {
 
 	fn view(&self, _ctx: &Context<Self>) -> Html {
 		html! {
-			<div class={classes!("container")} style="padding: 5em;">
-				<div class="row">
-					<div class="col-sm-4">
-						<BCard>
-							<img src="https://blog.micromike.dev/photo.jpg" class="card-img-top" style="width: 75px; height: 75px; border-radius:50%;"/>
-							<BCardBody>
-								<h5 class="card-title"> {"Rueimin Jiang Blog"} </h5>
-								<h6 class="card-subtitle"> {"Love Programming and sharing"} </h6>
-							</BCardBody>
-						</BCard>
-					</div>
-					<div class="col-sm-8">
-						<BrowserRouter>
-							<Switch<AppRoute>
-								render = {
-									Switch::render(|switch: &AppRoute| {
-									match switch {
-										AppRoute::Blog{id} => html!{<Blog id={id.clone()}/>},
-										AppRoute::BlogList => html!{<BlogList />},
-										AppRoute::Default => html!{<BlogList />},
-									}
-								})
-							}
-							/>
-						</BrowserRouter>
-					</div>
+			<div class={classes!("flex", "flex-row", "px-10", "py-10")}>
+				<div 
+					class={classes!("basis-2/6")}
+				>
+					<SideBar
+						author={"Mike Jiang"}
+						description={"A senior developer and a rust lover"}
+						avatar={"https://blog.micromike.dev/photo.jpg"}
+						items={
+							vec![
+								("Articles", "/blog"),
+								("About me", "/profile"),
+								("Contact me", "/contact"),
+							]
+						}
+					/>
+				</div>
+
+				<div
+					class={classes!("basis-4/6")}
+				>
+					<BrowserRouter>
+						<Switch<AppRoute>
+							render = {
+								Switch::render(|switch: &AppRoute| {
+								match switch {
+									AppRoute::Blog{id} => html!{<Blog id={id.clone()}/>},
+									AppRoute::BlogList => html!{<BlogList />},
+									AppRoute::Default => html!{<BlogList />},
+								}
+							})
+						}
+						/>
+					</BrowserRouter>
 				</div>
 			</div>
 		}
