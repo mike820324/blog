@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use crate::components::article::Article;
 
 pub struct BlogList;
 
@@ -15,21 +16,25 @@ impl Component for BlogList {
 	}
 
 	fn view(&self, _ctx: &Context<Self>) -> Html {
-        html!{
-            <>
-                <div>
-                        <h6 class="card-subtitle"> {"October 2021"} </h6>
-                        <h5 class="card-title"> {"Blog 1"} </h5>
-                        <p class="card-text"> {"This is the very first blog post"} </p>
-                        <a class="card-link" href="/blog/blog1"> {"Read"} </a>
+                html!{
+                <div
+                        class={classes!("pl-5")}
+                >
+                        <Article 
+                                publish_time="OCTOBER 2021"
+                                labels="BACKEND"
+                                title="Article - Very First Post"
+                                description="dfadsfas fdsafeafe dfadsfadsf"
+                                link="/blog/blog1"
+                        />
+                        <Article 
+                                publish_time="OCTOBER 2021"
+                                labels="BACKEND"
+                                title="Article - Very Second Post"
+                                description="dfadsfas fdsafeafe dfadsfadsf"
+                                link="/blog/blog2"
+                        />
                 </div>
-                <div>
-                        <h6 class="card-subtitle"> {"October 2021"} </h6>
-                        <h5 class="card-title"> {"Blog 2"} </h5>
-                        <p class="card-text"> {"This is the very first blog post"} </p>
-                        <a class="card-link" href="/blog/blog2"> {"Read"} </a>
-                </div>
-            </>
+                }
         }
-    }
 }

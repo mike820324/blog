@@ -19,7 +19,7 @@ pub fn sidebar(props: &SideBarProps) -> Html
             class={classes!("py-1")}
         >
             <a
-                class={classes!("hover:border-b-4", "hover:border-color-gray", "hover:text-blue-300")}
+                class={classes!("hover:border-b-4", "hover:border-color-gray", "hover:text-blue-400", "text-sm")}
                 href={item.1}
             > {item.0}</a>
         </li>
