@@ -1,5 +1,5 @@
 use yew::prelude::*;
-use pulldown_cmark::{html, Options, Parser};
+use pulldown_cmark::{html, Parser};
 use gloo_utils::document;
 
 #[derive(Properties, PartialEq)]
