@@ -1,5 +1,6 @@
 use yew::prelude::*;
 use crate::components::article::Article;
+use crate::components::article_list_pagination::ArticleListPagination;
 
 pub struct BlogList;
 
@@ -34,6 +35,8 @@ impl Component for BlogList {
                                 description="dfadsfas fdsafeafe dfadsfadsf"
                                 link="/blog/blog2"
                         />
+
+                        <ArticleListPagination />
                 </div>
                 }
         }
