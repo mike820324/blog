@@ -1,34 +1,23 @@
 use yew::prelude::*;
-use crate::components::article::Article;
+use crate::components::article_list_item::ArticleListItem;
 use crate::components::article_list_pagination::ArticleListPagination;
 
-pub struct BlogList;
 
-impl Component for BlogList {
-	type Message = ();
-	type Properties = ();
-
-	fn create(_: &Context<Self>) -> Self {
-        Self
-	}
-
-	fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
-        false
-	}
-
-	fn view(&self, _ctx: &Context<Self>) -> Html {
-                html!{
+#[function_component(ArticleList)]
+pub fn article_list() -> Html
+{
+        html!{
                 <div
                         class={classes!("pl-5")}
                 >
-                        <Article 
+                        <ArticleListItem
                                 publish_time="OCTOBER 2021"
                                 labels="BACKEND"
                                 title="Article - Very First Post"
                                 description="dfadsfas fdsafeafe dfadsfadsf"
                                 link="/blog/blog1"
                         />
-                        <Article 
+                        <ArticleListItem 
                                 publish_time="OCTOBER 2021"
                                 labels="BACKEND"
                                 title="Article - Very Second Post"
@@ -38,6 +27,5 @@ impl Component for BlogList {
 
                         <ArticleListPagination />
                 </div>
-                }
         }
 }

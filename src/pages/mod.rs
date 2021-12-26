@@ -1,2 +1,2 @@
-pub mod blog;
-pub mod blog_list;
+pub mod article;
+pub mod article_list;
