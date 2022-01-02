@@ -23,7 +23,7 @@ pub fn article_content(props: &ArticleContentProps) -> Html
 
 
     let div = document().create_element("div").unwrap();
-    div.set_class_name("blog-content");
+    div.set_class_name("prose prose-stone");
     div.set_inner_html(&html_content);
 
     Html::VRef(div.into())
